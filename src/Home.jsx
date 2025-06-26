@@ -1,10 +1,11 @@
 import React from "react";
+import ImgHome from "./assets/images/homepage.jpeg";
 
 const Home = () => {
   return (
     <div className="min-h-screen bg-gray-100 text-gray-800">
       {/* Header */}
-      <header className="bg-orange-300 text-white shadow p-4">
+      {/* <header className="bg-orange-300 text-white shadow p-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <h1 className="text-2xl font-bold">TranspoEase</h1>
           <nav>
@@ -24,20 +25,24 @@ const Home = () => {
             </ul>
           </nav>
         </div>
-      </header>
-
-      {/* Hero Section */}
-      <section className="bg-white py-20 text-center">
-        <h2 className="text-4xl font-bold mb-4">
-          Your Reliable Transport Partner
-        </h2>
-        <p className="text-lg text-gray-600 mb-6">
-          Safe and efficient transportation for everyone.
-        </p>
-        <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
-          Book Now
-        </button>
-      </section>
+      </header> */}
+      <div className="relative w-full h-[400px] overflow-hidden">
+        <img
+          src={ImgHome}
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
+        />
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-black- text-center px-4">
+          <h2 className="text-4xl font-bold mb-4">
+            Your Reliable Transport Partner
+          </h2>
+          <p className="text-lg mb-6 font-bold mb-3">
+            Safe and efficient transportation for everyone.
+          </p>
+          <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+            Book Now
+          </button>
+        </div>
+      </div>
 
       {/* Services Section */}
       <section className="py-16 bg-gray-50">
