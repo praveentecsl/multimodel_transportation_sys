@@ -38,28 +38,28 @@ const Home = () => {
           <p className="text-lg mb-6 font-bold mb-3">
             Safe and efficient transportation for everyone.
           </p>
-          <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+          <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-red-700">
             Book Now
           </button>
         </div>
       </div>
 
       {/* Services Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-blue-100">
         <div className="max-w-6xl mx-auto px-4">
           <h3 className="text-3xl font-semibold mb-10 text-center">
             Our Services
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded shadow">
+            <div className="bg-yellow-100 p-6 rounded shadow">
               <h4 className="text-xl font-bold mb-2">Passenger Transport</h4>
               <p>Daily commutes and long trips made easy.</p>
             </div>
-            <div className="bg-white p-6 rounded shadow">
+            <div className="bg-purple-300 p-6 rounded shadow">
               <h4 className="text-xl font-bold mb-2">Logistics</h4>
               <p>Efficient goods delivery anywhere, anytime.</p>
             </div>
-            <div className="bg-white p-6 rounded shadow">
+            <div className="bg-green-100 p-6 rounded shadow">
               <h4 className="text-xl font-bold mb-2">Vehicle Rentals</h4>
               <p>Choose from a wide range of rental vehicles.</p>
             </div>

@@ -2,7 +2,7 @@ import Img from "../assets/images/homepage.jpeg";
 
 const About = () => {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12">
+    <div className="max-w-4xl mx-auto px-4 py-12 ">
       <h2 className="text-4xl font-bold mb-6 text-blue-700">
         About TranspoEase
       </h2>
