@@ -32,6 +32,9 @@ export default function Login() {
           <a href="/signup" className="text-blue-600 hover:underline">
             Sign up
           </a>
+          <a href="/" className="flex justify-evenly">
+            cancle
+          </a>
         </p>
       </form>
     </div>

@@ -56,6 +56,9 @@ export default function Signup() {
         >
           Sign Up
         </button>
+        <p className="flex justify-evenly">
+          <a href="/">cancle</a>
+        </p>
       </form>
     </div>
   );
