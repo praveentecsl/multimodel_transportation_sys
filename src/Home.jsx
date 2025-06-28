@@ -1,7 +1,18 @@
 import React from "react";
 import ImgHome from "./assets/images/homepage.jpeg";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const handleSignUp = () => {
+    navigate("/signup");
+  };
+
+  const handleLogIn = () => {
+    navigate("/login");
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 text-gray-800">
       {/* Header */}
@@ -38,9 +49,20 @@ const Home = () => {
           <p className="text-lg mb-6 font-bold mb-3">
             Safe and efficient transportation for everyone.
           </p>
-          <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-red-700">
-            Book Now
-          </button>
+          <div className="flex justify-center gap-4">
+            <button
+              className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-red-700"
+              onClick={handleSignUp}
+            >
+              Sign up
+            </button>
+            <button
+              className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-red-700"
+              onClick={handleLogIn}
+            >
+              Log in
+            </button>
+          </div>
         </div>
       </div>
 
