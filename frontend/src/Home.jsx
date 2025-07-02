@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
   const [message, setmessage] = useState("");
+  const [msg, setmsg] = useState("");
 
   const handleSignUp = () => {
     fetch("http://localhost:5000/api/hello")
@@ -12,8 +13,12 @@ const Home = () => {
       .then((data) => setmessage(data.message))
       .catch((err) => console.error("API call failed", err));
   };
+
   const handleLogIn = () => {
-    navigate("/login");
+    fetch("http://localhost:5000/api/hello_2")
+      .then((res) => res.json())
+      .then((data) => setmsg(data.msg))
+      .catch((err) => console.error("request is failed", err));
   };
 
   return (
@@ -83,7 +88,7 @@ const Home = () => {
             </div>
             <div className="bg-purple-300 p-6 rounded shadow">
               <h4 className="text-xl font-bold mb-2">Logistics</h4>
-              <p>Efficient goods delivery anywhere, anytime.</p>
+              {msg && <p>{msg}</p>}
             </div>
             <div className="bg-green-100 p-6 rounded shadow">
               <h4 className="text-xl font-bold mb-2">Vehicle Rentals</h4>

@@ -7,7 +7,11 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/api/hello", (req, res) => {
-  res.json({ message: "hello from express and praveen I am in the library" });
+  res.json({ message: "Sign up weyan manussayo wada nodiiiiiiiiiii  yo" });
+});
+
+app.get("/api/hello_2", (req, res) => {
+  res.json({ msg: "Log weyan ithinnnnnnnnnnnnnnnnnn" });
 });
 
 app.post("/api/user", (req, res) => {
