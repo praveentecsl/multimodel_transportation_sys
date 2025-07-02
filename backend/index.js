@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/api/hello", (req, res) => {
-  res.json({ massage: "hello from express and praveen" });
+  res.json({ message: "hello from express and praveen I am in the library" });
 });
 
 app.post("/api/user", (req, res) => {

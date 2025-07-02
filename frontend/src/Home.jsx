@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import ImgHome from "./assets/images/homepage.jpeg";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
+  const [message, setmessage] = useState("");
 
   const handleSignUp = () => {
-    navigate("/signup");
+    fetch("http://localhost:5000/api/hello")
+      .then((res) => res.json())
+      .then((data) => setmessage(data.message))
+      .catch((err) => console.error("API call failed", err));
   };
-
   const handleLogIn = () => {
     navigate("/login");
   };
@@ -70,12 +73,13 @@ const Home = () => {
       <section className="py-16 bg-blue-100">
         <div className="max-w-6xl mx-auto px-4">
           <h3 className="text-3xl font-semibold mb-10 text-center">
-            Our Services
+            praveen chandeepa
           </h3>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-yellow-100 p-6 rounded shadow">
               <h4 className="text-xl font-bold mb-2">Passenger Transport</h4>
-              <p>Daily commutes and long trips made easy.</p>
+              {message && <p>{message}</p>}
             </div>
             <div className="bg-purple-300 p-6 rounded shadow">
               <h4 className="text-xl font-bold mb-2">Logistics</h4>
