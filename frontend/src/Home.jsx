@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ImgHome from "./assets/images/homepage.jpeg";
 import { useNavigate } from "react-router-dom";
 
@@ -6,6 +6,18 @@ const Home = () => {
   const navigate = useNavigate();
   const [message, setmessage] = useState("");
   const [msg, setmsg] = useState("");
+  const [temp, settemp] = useState();
+
+  const url =
+    "http://api.weatherapi.com/v1/current.json?key=3ed0881d9eab45c19bb71724252006&q=London";
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetch(url);
+      console.log(result);
+    };
+    fetchData();
+  });
 
   const handleSignUp = () => {
     fetch("http://localhost:5000/api/hello")
