@@ -11,7 +11,7 @@ app.get("/api/hello", (req, res) => {
 });
 
 app.get("/api/hello_2", (req, res) => {
-  res.json({ msg: "Log weyan ithinnnnnnnnnnnnnnnnnn" });
+  res.json({ msg: "Log weyan ithinnnnnnnnnnnnnnnnnnasfasf" });
 });
 
 app.post("/api/user", (req, res) => {
