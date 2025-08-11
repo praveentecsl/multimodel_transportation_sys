@@ -1,10 +1,27 @@
 const express = require("express");
 const cors = require("cors");
 const port = 5000;
+const { connectToDb, getDb } = require('./db')
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+
+
+//connect to data base
+let db
+
+connectToDb((err) =>{
+  if(!err){
+    app.listen(port, () => console.log("Backend is running on port 5000"));
+  }
+
+  db = getDb
+
+})
+
+
 
 app.get("/api/hello", (req, res) => {
   res.json({ message: "Sign up weyan manussayo wada nodiiiiiiiiiii  yo" });
@@ -32,4 +49,4 @@ app.delete("/api/user/:id", (req, res) => {
   res.json({ information: `your user_id ${userId} is delelted successfully` });
 });
 
-app.listen(port, () => console.log("Backend is running on port 5000"));
+
