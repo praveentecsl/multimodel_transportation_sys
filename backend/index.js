@@ -21,6 +21,8 @@ connectToDb((err) =>{
 
 })
 
+//get requests 
+
 app.get("/api/books", async (req, res) => {
   try {
     const books = await db.collection("books").find().toArray();
@@ -30,9 +32,40 @@ app.get("/api/books", async (req, res) => {
   }
 });
 
+app.get("/api/animals", async (req, res) => {
+  try {
+    const animals = await db.collection("animals").find().toArray();
+    res.json(animals);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+//post requests
+
+app.post("/api/books", async (req, res) => {
+  try {
+    const book = req.body; // 👈 Get the book data from the request
+    const result = await db.collection("books").insertOne(book);
+    res.status(201).json({ message: "Book added", bookId: result.insertedId });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
 
+app.post("/api/animals", async (req, res) => {
+  try {
+    const animal = req.body; // 👈 Get the book data from the request
+    const result = await db.collection("animals").insertOne(animal);
+    res.status(201).json({ message: "animals are dangerous", animalId: result.insertedId });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
+
+//extra apis
 app.get("/api/hello", (req, res) => {
   res.json({ message: "Sign up weyan manussayo wada nodiiiiiiiiiii  yo" });
 });
