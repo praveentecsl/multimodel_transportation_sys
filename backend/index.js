@@ -17,9 +17,19 @@ connectToDb((err) =>{
     app.listen(port, () => console.log("Backend is running on port 5000"));
   }
 
-  db = getDb
+  db = getDb()
 
 })
+
+app.get("/api/books", async (req, res) => {
+  try {
+    const books = await db.collection("books").find().toArray();
+    res.json(books);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 
 
 
