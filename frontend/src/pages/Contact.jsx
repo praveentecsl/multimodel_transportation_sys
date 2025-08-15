@@ -1,4 +1,39 @@
+import { useState } from "react";
+
 const Contact = () => {
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch("http://localhost:5000/api/books", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await res.json();
+      console.log("Server response:", data);
+    } catch (err) {
+      console.error("Error sending data:", err);
+    }
+  };
+
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
       <h2 className="text-4xl font-bold mb-6 text-blue-700">Contact Us</h2>
@@ -7,7 +42,11 @@ const Contact = () => {
         need a quote — feel free to reach out.
       </p>
 
-      <form className="space-y-6">
+      <form
+        className="space-y-6"
+        onSubmit={handleSubmit}
+      >
+
         <div>
           <label className="block text-sm font-medium text-gray-700">
             Name
@@ -15,8 +54,12 @@ const Contact = () => {
           <input
             type="text"
             className="mt-1 block w-full p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+            value={formData.name}
+            onChange={handleChange}
+            name="name"
           />
         </div>
+
         <div>
           <label className="block text-sm font-medium text-gray-700">
             Email
@@ -24,8 +67,12 @@ const Contact = () => {
           <input
             type="email"
             className="mt-1 block w-full p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+            value={formData.email}
+            onChange={handleChange}
+            name="email"
           />
         </div>
+
         <div>
           <label className="block text-sm font-medium text-gray-700">
             Message
@@ -33,14 +80,19 @@ const Contact = () => {
           <textarea
             className="mt-1 block w-full p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
             rows="5"
+            value={formData.message}
+            onChange={handleChange}
+            name="message"
           ></textarea>
         </div>
+
         <button
           type="submit"
           className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
         >
           Send Message
         </button>
+
       </form>
 
       <div className="mt-8 text-gray-700">
