@@ -1,10 +1,19 @@
 const express = require("express");
 const cors = require("cors");
-const port = 5000;
 const { connectToDb, getDb } = require('./db')
 
+const PORT = process.env.PORT || 5000;
+
+
 const app = express();
-app.use(cors());
+app.use(cors(
+  {
+    origin:["http://localhost:5173","http:your-front-end.vercel.app"],
+    credentials: true
+  }
+));
+
+
 app.use(express.json());
 
 
@@ -14,7 +23,7 @@ let db
 
 connectToDb((err) =>{
   if(!err){
-    app.listen(port, () => console.log("Backend is running on port 5000"));
+    app.listen(PORT, () => console.log("Backend is running on port 5000"));
   }
 
   db = getDb()
