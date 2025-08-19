@@ -9,7 +9,7 @@ const Home = () => {
   const [temp, settemp] = useState();
 
   const url =
-    "http://api.weatherapi.com/v1/current.json?key=3ed0881d9eab45c19bb71724252006&q=London";
+    "https://api.weatherapi.com/v1/current.json?key=3ed0881d9eab45c19bb71724252006&q=London";
 
   useEffect(() => {
     const fetchData = async () => {
