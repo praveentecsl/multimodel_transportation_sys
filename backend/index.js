@@ -15,7 +15,8 @@ app.use(cors(
   }
 ));
 
-app.options("/*",cors());
+app.options("/api/books",cors());
+app.options("/api/animals",cors());
 app.use(express.json());
 
 
