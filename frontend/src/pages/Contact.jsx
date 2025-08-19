@@ -1,4 +1,5 @@
 import { useState } from "react";
+import API_BASE_URL from "../utils/api";
 
 const Contact = () => {
 
@@ -19,7 +20,7 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5000/api/books", {
+      const res = await fetch(`${API_BASE_URL}/api/animals`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
