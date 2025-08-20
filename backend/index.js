@@ -1,49 +1,45 @@
 const express = require("express");
 const cors = require("cors");
-const { connectToDb, getDb } = require('./db')
+const { connectToDb, getDb } = require("./db");
 
 const PORT = process.env.PORT || 5000;
 
-
 const app = express();
-app.use(cors(
-  {
-    origin:["http://localhost:5173","https://transpoease.vercel.app"],
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://transpoease.vercel.app"],
     credentials: true,
-    methods:["GET","POST","PUT","DELETE","OPTIONS"],
-    allowedHeaders:["Content-Type","Authorization"]
-  }
-));
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 app.use((req, res, next) => {
-  if (req.method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Origin', req.headers.origin);
-    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Origin", req.headers.origin);
+    res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
     return res.sendStatus(204);
   }
   next();
 });
 
-
-
 app.use(express.json());
 
-
-
 //connect to data base
-let db
+let db;
 
-connectToDb((err) =>{
-  if(!err){
-    app.listen(PORT, () => console.log("Backend is running on port 5000"));
+connectToDb((err) => {
+  if (!err) {
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`✅ Backend is running on port ${PORT}`);
+    });
   }
 
-  db = getDb()
+  db = getDb();
+});
 
-})
-
-//get requests 
+//get requests
 
 app.get("/api/books", async (req, res) => {
   try {
@@ -75,17 +71,17 @@ app.post("/api/books", async (req, res) => {
   }
 });
 
-
 app.post("/api/animals", async (req, res) => {
   try {
     const animal = req.body; // 👈 Get the book data from the request
     const result = await db.collection("animals").insertOne(animal);
-    res.status(201).json({ message: "animals are dangerous", animalId: result.insertedId });
+    res
+      .status(201)
+      .json({ message: "animals are dangerous", animalId: result.insertedId });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
-
 
 //extra apis
 app.get("/api/hello", (req, res) => {
@@ -113,5 +109,3 @@ app.delete("/api/user/:id", (req, res) => {
 
   res.json({ information: `your user_id ${userId} is delelted successfully` });
 });
-
-
