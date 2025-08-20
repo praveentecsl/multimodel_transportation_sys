@@ -102,8 +102,8 @@ app.delete("/api/user/:id", (req, res) => {
 
 connectToDb((err) => {
   if (!err) {
-    app.listen(PORT, () => {
-      console.log(` Backend is running on port ${PORT}`);
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`✅ Backend is running on port ${PORT}`);
     });
   }
 
