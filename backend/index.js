@@ -29,16 +29,6 @@ app.use(express.json());
 //connect to data base
 let db;
 
-connectToDb((err) => {
-  if (!err) {
-    app.listen(PORT, () => {
-      console.log(` Backend is running on port ${PORT}`);
-    });
-  }
-
-  db = getDb();
-});
-
 //get requests
 
 app.get("/api/books", async (req, res) => {
@@ -108,4 +98,14 @@ app.delete("/api/user/:id", (req, res) => {
   const userId = req.params.id;
 
   res.json({ information: `your user_id ${userId} is delelted successfully` });
+});
+
+connectToDb((err) => {
+  if (!err) {
+    app.listen(PORT, () => {
+      console.log(` Backend is running on port ${PORT}`);
+    });
+  }
+
+  db = getDb();
 });
