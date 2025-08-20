@@ -6,8 +6,6 @@ const PORT = process.env.PORT || 5000;
 
 
 const app = express();
-app.use(express.json());
-
 app.use(cors(
   {
     origin:["http://localhost:5173","https://transpoease.vercel.app"],
@@ -18,38 +16,32 @@ app.use(cors(
 ));
 
 app.use((req, res, next) => {
-  console.log(`[${req.method}] ${req.url}`);
+  if (req.method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Origin', req.headers.origin);
+    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+    return res.sendStatus(204);
+  }
   next();
 });
 
-app.use((req, res, next) => {
-  res.status(404).json({ error: "Route not found" });
-});
 
 
-
-
-
+app.use(express.json());
 
 
 
 //connect to data base
 let db
 
-connectToDb((err) => {
-  if (err) {
-    console.error("Failed to connect to database:", err);
-    process.exit(1);
+connectToDb((err) =>{
+  if(!err){
+    app.listen(PORT, () => console.log("Backend is running on port 5000"));
   }
 
-  db = getDb();
+  db = getDb()
 
-  app.listen(PORT, () => {
-    console.log(`🚀 Backend is running on port ${PORT}`);
-  });
-});
-
-
+})
 
 //get requests 
 
