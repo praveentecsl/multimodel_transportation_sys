@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import ImgHome from "./assets/images/homepage.jpeg";
 import { useNavigate } from "react-router-dom";
 
+import Login from "./pages/LogIn"
+
 const Home = () => {
   const navigate = useNavigate();
   const [message, setmessage] = useState("");
@@ -19,19 +21,27 @@ const Home = () => {
     fetchData();
   });
 
+  // const handleSignUp = () => {
+  //   fetch("http://localhost:5000/api/hello")
+  //     .then((res) => res.json())
+  //     .then((data) => setmessage(data.message))
+  //     .catch((err) => console.error("API call failed", err));
+  // };
+
   const handleSignUp = () => {
-    fetch("http://localhost:5000/api/hello")
-      .then((res) => res.json())
-      .then((data) => setmessage(data.message))
-      .catch((err) => console.error("API call failed", err));
-  };
+    navigate("/signup")
+  }
+
+  // const handleLogIn = () => {
+  //   fetch("http://localhost:5000/api/hello_2")
+  //     .then((res) => res.json())
+  //     .then((data) => setmsg(data.msg))
+  //     .catch((err) => console.error("request is failed", err));
+  // };
 
   const handleLogIn = () => {
-    fetch("http://localhost:5000/api/hello_2")
-      .then((res) => res.json())
-      .then((data) => setmsg(data.msg))
-      .catch((err) => console.error("request is failed", err));
-  };
+    navigate("/login")
+  }
 
   return (
     <div className="min-h-screen bg-gray-100 text-gray-800">
