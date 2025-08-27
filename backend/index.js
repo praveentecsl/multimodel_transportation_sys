@@ -79,7 +79,7 @@ app.get("/api/hello", (req, res) => {
 });
 
 app.get("/api/hello_2", (req, res) => {
-  res.json({ msg: "Log weyan ithinnnnnnnnnnnnnnnnnasfasf" });
+  res.json({ msg: "Log weyan ithinnn8888888nnasfasf" });
 });
 
 app.post("/api/user", (req, res) => {
