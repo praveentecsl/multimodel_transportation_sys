@@ -1,4 +1,13 @@
+import { useNavigate } from "react-router-dom";
+
 const Services = () => {
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/buses")
+  }
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
       <h2 className="text-4xl font-bold mb-6 text-blue-700">
@@ -33,6 +42,13 @@ const Services = () => {
           </p>
         </div>
       </div>
+      <br />
+      <button
+        className="w-52 bg-green-600 text-white p-3 rounded hover:bg-green-500 transition"
+        onClick={handleClick}
+      >
+        Buses
+      </button>
     </div>
   );
 };
