@@ -34,7 +34,7 @@ const Buses = () => {
             <ul>
                 {
                     animals.map((animal) => (
-                        <li key={animal._id}>
+                        <li key={animal._id} className="border p-3 rounded">
                             <p><strong>Name:</strong>{animal.name}</p>
                             <p><strong>Name:</strong>{animal.name}</p>
                             <p><strong>Name:</strong>{animal.name}</p>

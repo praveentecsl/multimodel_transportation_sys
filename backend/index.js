@@ -45,12 +45,13 @@ app.get("/api/animals", async (req, res) => {
   try {
     const animals = await db.collection("animals").find().toArray();
 
-    const formatted = animals.map((a) => ({
-      ...a,
-      _id: a._id.toString(),
-    }));
+    // const formatted = animals.map((a) => ({
+    //   ...a,
+    //   _id: a._id.toString(),
+    // }));
 
-    res.json(formatted);
+    //res.json(formatted);
+    res.json(animals);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
