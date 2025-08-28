@@ -1,11 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
 import API_BASE_URL from '../utils/api';
+import { useNavigate } from 'react-router-dom';
 
 
 const Buses = () => {
 
     const [animals, setAnimals] = useState([]);
+    const navigate = useNavigate();
 
     const fetchAnimals = async () => {
         try {
@@ -19,6 +21,10 @@ const Buses = () => {
 
         }
     };
+
+    const handleClick = () => {
+        navigate("/services")
+    }
 
     return (
         <div>
@@ -44,6 +50,13 @@ const Buses = () => {
                 }
 
             </ul>
+
+            <button
+                onClick={handleClick}
+                className="bg-orange-600 text-white px-6 py-2 rounded hover:bg-purple-700 mt-4"
+            >
+                Back
+            </button>
 
 
 
