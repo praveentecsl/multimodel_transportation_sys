@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import API_BASE_URL from '../utils/api';
 import { useNavigate } from 'react-router-dom';
@@ -26,6 +26,10 @@ const Buses = () => {
         navigate("/services")
     }
 
+    useEffect(() => {
+        console.log("animals:", animals);
+    }, [animals])
+
     return (
         <div>
             <div>Buses</div>
@@ -42,8 +46,8 @@ const Buses = () => {
                     animals.map((animal) => (
                         <li key={animal._id} className="border p-3 rounded">
                             <p><strong>Name:</strong>{animal.name}</p>
-                            <p><strong>Name:</strong>{animal.name}</p>
-                            <p><strong>Name:</strong>{animal.name}</p>
+                            <p><strong>Name:</strong>{animal.email}</p>
+                            <p><strong>Message:</strong>{animal.messadge}</p>
 
                         </li>
                     ))
