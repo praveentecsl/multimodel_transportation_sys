@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const { connectToDb, getDb } = require("./db");
-// const { ObjectId } = require("mongodb");
+const { ObjectId } = require("mongodb");
 
 const PORT = process.env.PORT || 5000;
 
@@ -100,6 +100,21 @@ app.post("/api/animals", async (req, res) => {
 //     res.status(500).json({ error: err.message });
 //   }
 // });
+
+app.put("/api/animals/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updatedData = req.body;
+
+    const result = await db
+      .collection("animals")
+      .updateOne({ _id: new ObjectId(id) }, { $set: updatedData });
+
+    res.json({ message: "Animal updated", result });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
 //extra apis
 app.get("/api/hello", (req, res) => {
