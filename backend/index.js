@@ -116,6 +116,21 @@ app.put("/api/animals/:id", async (req, res) => {
   }
 });
 
+//delete requests
+app.delete("/api/animals/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const result = await db.collection("animals").deleteOne({
+      _id: new ObjectId(id),
+    });
+
+    res.json({ message: "Animal deleted", result });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 //extra apis
 app.get("/api/hello", (req, res) => {
   res.json({ message: "Sign up weyan manussayo wada nodiiiiiiiiiii  yo" });

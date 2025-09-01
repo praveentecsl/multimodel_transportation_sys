@@ -54,6 +54,21 @@ const Buses = () => {
         }
     };
 
+    const handleDelete = async (id) => {
+        try {
+            const res = await fetch(`${API_BASE_URL}/api/animals/${id}`, {
+                method: "DELETE",
+            });
+
+            if (res.ok) {
+                // update UI without re-fetching everything
+                setAnimals((prev) => prev.filter((a) => a._id !== id));
+            }
+        } catch (err) {
+            console.error("delete error", err);
+        }
+    };
+
     return (
         <div>
             <div>Buses</div>
@@ -95,7 +110,11 @@ const Buses = () => {
                                     className="border p-1 mr-2"
                                 />
                                 <button
-                                    onClick={() => handleUpdate(animal._id)}
+                                    onClick={() => {
+                                        if (window.confirm("are you gurentee this edit to sava")) {
+                                            handleUpdate(animal._id);
+                                        }
+                                    }}
                                     className="bg-green-500 text-white px-2 py-1 rounded"
                                 >
                                     Save
@@ -118,6 +137,18 @@ const Buses = () => {
                                     className="bg-blue-500 text-white px-2 py-1 rounded"
                                 >
                                     Edit
+                                </button>
+
+                                <button
+                                    onClick={() => {
+                                        if (window.confirm("are you sure to delete this")) {
+                                            handleDelete(animal._id);
+
+                                        }
+                                    }}
+                                    className="bg-red-500 text-white px-3 py-1 rounded mt-2"
+                                >
+                                    Delete
                                 </button>
                             </>
                         )}
