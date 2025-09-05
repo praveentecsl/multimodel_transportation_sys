@@ -105,11 +105,13 @@ const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-yellow-100 p-6 rounded shadow">
-              <h4 className="text-xl font-bold mb-2">Passenger Transport</h4>
+              <h4 className="text-xl font-bold mb-2">Passenger Transporttt</h4>
               {/* {message && <p>{message}</p>} */}
+              <p>Hi my name is praveen chandeepa weerasinghe</p>
             </div>
             <div className="bg-purple-300 p-6 rounded shadow">
               <h4 className="text-xl font-bold mb-2">Logistics</h4>
+              <p>sfdsfdf</p>
               {/* {msg && <p>{msg}</p>} */}
             </div>
             <div className="bg-green-100 p-6 rounded shadow">
