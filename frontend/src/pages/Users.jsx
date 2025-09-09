@@ -80,7 +80,7 @@ const Users = () => {
 
     return (
         <div>
-            <div>My name is praveen</div>
+            <h1>To get the user information press the Load button</h1>
             <div class="flex justify-between px-4 py-2">
 
                 <button
