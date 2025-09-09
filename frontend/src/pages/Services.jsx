@@ -8,6 +8,10 @@ const Services = () => {
     navigate("/buses")
   }
 
+  const handleClick_2 = () => {
+    navigate("/users")
+  }
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
       <h2 className="text-4xl font-bold mb-6 text-blue-700">
@@ -43,12 +47,24 @@ const Services = () => {
         </div>
       </div>
       <br />
-      <button
-        className="w-52 bg-green-600 text-white p-3 rounded hover:bg-green-500 transition"
-        onClick={handleClick}
-      >
-        Buses
-      </button>
+      <div class="flex justify-between px-4 py-2">
+        <button
+          className="w-52 bg-green-600 text-white p-3 rounded hover:bg-green-500 transition"
+          onClick={handleClick}
+        >
+          Buses
+        </button>
+
+        <button
+          className="w-52 bg-green-600 text-white p-3 rounded hover:bg-green-500 transition"
+          onClick={handleClick_2}
+        >
+          Users
+        </button>
+
+
+
+      </div>
     </div>
   );
 };

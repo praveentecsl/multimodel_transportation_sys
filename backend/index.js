@@ -57,6 +57,22 @@ app.get("/api/animals", async (req, res) => {
   }
 });
 
+app.get("/api/users", async (req, res) => {
+  try {
+    const users = await db.collection("users").find().toArray();
+
+    // const formatted = animals.map((a) => ({
+    //   ...a,
+    //   _id: a._id.toString(),
+    // }));
+
+    //res.json(formatted);
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 //post requests
 
 app.post("/api/books", async (req, res) => {
@@ -73,6 +89,18 @@ app.post("/api/animals", async (req, res) => {
   try {
     const animal = req.body; // 👈 Get the book data from the request
     const result = await db.collection("animals").insertOne(animal);
+    res
+      .status(201)
+      .json({ message: "animals are dangerous", animalId: result.insertedId });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.post("/api/users", async (req, res) => {
+  try {
+    const user = req.body; // 👈 Get the book data from the request
+    const result = await db.collection("users").insertOne(user);
     res
       .status(201)
       .json({ message: "animals are dangerous", animalId: result.insertedId });
@@ -116,6 +144,21 @@ app.put("/api/animals/:id", async (req, res) => {
   }
 });
 
+app.put("/api/users/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updatedData = req.body;
+
+    const result = await db
+      .collection("users")
+      .updateOne({ _id: new ObjectId(id) }, { $set: updatedData });
+
+    res.json({ message: "Users updated", result });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 //delete requests
 app.delete("/api/animals/:id", async (req, res) => {
   try {
@@ -126,6 +169,20 @@ app.delete("/api/animals/:id", async (req, res) => {
     });
 
     res.json({ message: "Animal deleted", result });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.delete("/api/users/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const result = await db.collection("users").deleteOne({
+      _id: new ObjectId(id),
+    });
+
+    res.json({ message: "User is deleted", result });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
