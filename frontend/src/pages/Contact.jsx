@@ -30,6 +30,7 @@ const Contact = () => {
 
       const data = await res.json();
       console.log("Server response:", data);
+      alert("Your Message is successfully send")
     } catch (err) {
       console.error("Error sending data:", err);
     }
